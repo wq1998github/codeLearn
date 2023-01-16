@@ -1,0 +1,90 @@
+{
+    // 颜色主题：Dark+
+    // 图标主题：默认
+
+    // 默认字体大小
+    "editor.fontSize": 16,
+    // 通过鼠标滚轮调节字体大小
+    "editor.mouseWheelZoom": true,
+    // 选中颜色、当前行颜色
+    "workbench.colorCustomizations": {
+        "editor.selectionHighlightBackground": "#fbff0065",
+        "editor.selectionBackground": "#fbff0065",
+        "editor.lineHighlightBackground": "#00ffd52a"
+    },
+    // 折行显示
+    "editor.wordWrap": "on",
+    
+    // 智能提示
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.suggestSelection": "recentlyUsed",
+    
+    // 增加流畅度
+    "editor.cursorSmoothCaretAnimation": true,
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+
+    // 代码格式化
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+
+    // Doxygen Documentation Generator插件设置 ------Begin
+
+    // 作者和邮箱
+    "doxdocgen.generic.authorName": "Shin",
+    "doxdocgen.generic.authorEmail": "None",
+    "doxdocgen.generic.authorTag": "@Author : {author}",//(email:{email})",
+
+    // 日期格式
+    "doxdocgen.generic.dateFormat": "YYYY-MM-DD",
+    "doxdocgen.generic.dateTemplate": "@Creat Date : {date}",
+    
+    // 简介格式
+    "doxdocgen.generic.briefTemplate": "@brief : ",
+    
+    // 文件注释的格式
+    "doxdocgen.file.fileTemplate": "@File Name : {name}",
+    "doxdocgen.file.versionTag": "@Version : 1.0",
+    "doxdocgen.file.copyrightTag": [
+        "@copyright Copyright (c) {year} XXXX技术有限公司"
+    ],
+    
+    // 自定义文件注释格式
+    "doxdocgen.file.customTag": [
+        "modification history : ",
+        "Date : ",
+        "Version : ",
+        "Author : ",
+        "Changes : ",
+    ],
+    
+    // 文件注释组成及顺序
+    "doxdocgen.file.fileOrder": [
+        "file", // @file
+        "brief", // @brief 文件简介
+        "author", // 作者
+        "version", // 版本
+        "date", // 日期
+        // "empty", // 空行
+        // "copyright",// 版权
+        // "custom"	// 用户自定义
+    ],
+
+    // 函数参数注释和返回注释的格式
+    "doxdocgen.generic.paramTemplate": "@param{indent:8}{param}: ",
+    "doxdocgen.generic.returnTemplate": "@return{indent:8}{type}: ",
+    
+    // 函数注释组成及顺序
+    "doxdocgen.generic.order":[
+        "brief",
+        "empty",
+        "tparam",
+        "param",
+        "return",
+        // "custom"
+    ],
+
+    // Doxygen Documentation Generator插件设置 ------End
+}

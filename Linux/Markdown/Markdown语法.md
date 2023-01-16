@@ -136,5 +136,14 @@ int main()
 需要使用HTML语言  
 <font color="red"> 注意 </font>
 
+## 标记跳转
+
+[目录1](#jump1)  
+[目录2](#jump2)
+
+<span id="jump1">1. 目录1</span>
+
+<span id="jump2">2. 目录2</span>
+
 
 [^猫雷]:我不知道也不想知道

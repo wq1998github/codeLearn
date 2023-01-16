@@ -1,0 +1,28 @@
+########## 定义变量 ##########
+TARGET = main.out
+SOURCE = main.c test.c
+OBJECT = main.o test.o
+CC = gcc # 定义使用的编译器
+
+## 使用特殊变量 $@ 和 $^ 来代替 $(TARGET) 和 $(OBJECT)
+$(TARGET):$(OBJECT)
+	$(CC) $^ -o $@
+
+## 生成 $(TARGET) 所依赖的两个 .o 文件
+## 可以看到生成 test.o 和生成 main.o 的command是一样的，简化以避免重复
+#test.o:test.c
+#	$(CC) $^ -c -o $@
+
+#main.o:main.c
+#	$(CC) $^ -c -o $@
+
+## 使用模式规则简化 *.o 文件的生成
+## 模式规则：每次取出一个 .c 文件执行该规则
+## 所有的 .o 文件依赖各自的 .c 文件
+%.o:%.c
+	$(CC) $< -c
+
+## clean只是一个标签，类似的还有install，都是约定俗成的定义
+## clean一般用于删除生成的中间文件和最终的可执行文件
+clean:
+	rm -f $(TARGET) $(OBJECT)
