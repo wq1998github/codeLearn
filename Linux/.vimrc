@@ -7,13 +7,18 @@
 "                             
 "=========================================================
 
-
-
-
+" <CR>                               == Enter
+" <LEADER>                           == switch to <space>
+" <left>                             == <-
+" <right>                            == ->
+" <up>                               == ^
+" <down>                             == v
+" <C-t>                              == ctrl+t
 
 
 " change leader to <space>
-let mapleader=" "
+"let mapleader=" "
+let mapleader="\<space>"
 
 
 " for plugins
@@ -31,40 +36,41 @@ let &t_ut=''
 
 
 
-" ================================= set property ================================
+" ================================= set option ================================
 " show the number of each line
 set number
 set relativenumber
 
 
-" show the current line by a cursor line
+" show the current line through a cursor line
 set cursorline
 
 
-" complete the :command by tab
+" complete the command through tab
 set wildmenu
 
 
-" highlight your searching
+" highlight the keywords you searched
 set hlsearch
 
-" avoid highlight the lastest searching in the next open file
-exec "nohlsearch"
+" avoid to highlight the lastest keyword you searched in the next open file
+" It seems to be unnecessary. I do not know
+"exec "nohlsearch"
 
-" highlight while you are searching
+" highlight (and jump to) the keyword you searched
 set incsearch
 
-" jump to your searching
+" jump to the next or the last
 " +: the next one
 " -: the last one
 noremap + nzz
 noremap - Nzz
 
-" clear the highlight result
+" clear highlight
 noremap <LEADER>c :nohlsearch<CR>
 
 
-" enable the mouse
+" enable your mouse
 set mouse=a
 
 
@@ -81,7 +87,7 @@ syntax on
 
 
 
-" ================================= basic configuration ================================
+" ================================= save && quit ================================
 " save and quit
 map ww :wq<CR>
 
@@ -101,15 +107,16 @@ map Q :q<CR>
 
 
 
-" =================================== split option =================================
-" vertically split, cursor in left
+" ================================ split option ==============================
+" split vertically, cursor in left
 map <LEADER><left> :set nosplitright<CR>:vsplit<CR>
 
-" vertically split, cursor in right
+" split vertically, cursor in right
 map <LEADER><right> :set splitright<CR>:vsplit<CR>
 
-" loop jumps in split, ctrl+w+w
-" switch NERDTree to code window by it also
+" loop jump in split, ctrl+w+w
+" switch NERDTree to code window also through it
+" NERDTree likes a split
 map ll <C-w>w
 
 " resize the split window
@@ -118,17 +125,17 @@ map > :vertical resize-5<CR>
 map < :vertical resize+5<CR>
 
 
-" NERDTree likes a split
 
 
-" =================================== tab(new file) =================================
-" open a new tab
-map <LEADER>t :tabe<CR>
+
+" ================================ tab(new file) =============================
+" create a new tab
+map t<LEADER> :tabe<CR>
 
 " jump to the left tab
 map t<left> :-tabnext<CR>
 
-" jump to right left tab
+" jump to the right tab
 map t<right> :+tabnext<CR>
 
 
@@ -136,26 +143,29 @@ map t<right> :+tabnext<CR>
 " !!!!!  avoid the conflict of NERDTree !!!!!
 
 
-" =================================== vim plug  ====================================
+" ================================ vim plug  =================================
 call plug#begin()
 
-" status line
+" usage: status line in the bottom
 Plug 'vim-airline/vim-airline'
 
-" a scheme
+" usage: a nice scheme
 Plug 'morhetz/gruvbox'
 
-" show an underline under each same words
+" usage: underline the same words
 Plug 'itchyny/vim-cursorword'
 
-" file tree
+" usage: a powerful file tree
 Plug 'preservim/nerdtree'
 
-" show git status
+" usage: show file status in git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" goyo, a focus mode
+" usage: a focus mode
 Plug 'junegunn/goyo.vim'
+
+" usage: complete code
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -163,7 +173,7 @@ call plug#end()
 
 
 
-" ==================================== scheme  ====================================
+" ================================== scheme  =================================
 colorscheme gruvbox
 set bg=dark
 
@@ -172,15 +182,13 @@ set bg=dark
 
 
 " ==================================== NERDTree  ====================================
-" jump by ll(ctrl+w+w)
-"nnoremap <leader>n :NERDTreeFocus<CR>
+" close the NERDTree. make goyo convenient
+nnoremap tt :NERDTreeClose<CR>
 
-" open the NERDTree
-nnoremap tt :NERDTree<CR>
+" open the NERDTree. open file will open NERDTree automatically
+nnoremap to :NERDTree<CR>
 
-"nnoremap <C-t> :NERDTreeToggle<CR>
-
-" open the path of current file in NERDTree
+" find current file in NERDTree
 nnoremap tf :NERDTreeFind<CR>
 
 " Start NERDTree. If a file is specified, move the cursor to its window.
@@ -221,4 +229,8 @@ map <LEADER>gy :Goyo<CR>
 
 " turn off the Goyo
 map <LEADER>gg :Goyo!<CR>
+
+
+
+
 
