@@ -10,8 +10,8 @@ void hexArr2Str(unsigned char *hexArr, int arrSize, unsigned char *strBuf)
 	unsigned char *pStrBuf = strBuf;
 
 	for(i = 0; i < arrSize; i++) {
-		sprintf(pStrBuf++, "%x", hexArr[i] >> 4);
-		sprintf(pStrBuf++, "%x", hexArr[i] & 0x0f);
+		sprintf((char *)pStrBuf++, "%x", hexArr[i] >> 4);
+		sprintf((char *)pStrBuf++, "%x", hexArr[i] & 0x0f);
 	}
 
 	//printf("\n=== hexArr2AscStr: %s ===\n", strBuf);

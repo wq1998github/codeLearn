@@ -28,6 +28,7 @@ unsigned char hexChar2Number(unsigned char c)
 }
 
 //base:10 or 16
+//it's unnecessary, hexadecimal character including all of decimal character.
 unsigned char char2Number(unsigned char c, int base)
 {
 	unsigned char ret = 0xff;
@@ -47,25 +48,6 @@ unsigned char char2Number(unsigned char c, int base)
 	return ret;
 }
 
-//"1234567890" -> { 0x12, 0x34, 0x56, 0x78, 0x90 }
-void ascii2CompressBCD(unsigned char* ascStr, unsigned char *bcdBuf, int bcdBufSize)
-{
-	int ascStrLen = strlen(ascStr);
-	
-	memset(bcdBuf, 0x00, bcdBufSize);
-	
-	for (int i = 0; i < ascStrLen; i += 2) {
-		bcdBuf[i/2] = (char2Number(ascStr[i], 16) << 4) | \
-					  (char2Number(ascStr[i+1], 16) & 0x0f);
-	}
-
-	for (int i = 0; i < ascStrLen / 2; i++) {
-		printf("0x%02x ", bcdBuf[i]);
-	}
-	printf("\n");
-}
-
-
 
 // gcc  mathStr2math.c -lm -o  mathStr2math1~
 // need "-lm" to linking math library
@@ -78,8 +60,11 @@ int mathStr2Value(const char *mathStr, int base)
 
 	for(int i = 0; i < strLen; i++) {
 		curChar = mathStr[strLen-i-1];
+		//printf("%c ", curChar);
 		value += char2Number(curChar, base) * pow(base, i);
+		//printf("0x%x ", value);
 	}
+	//printf("\n++ 0x%x ++\n", value);
 	return value;
 }
 
@@ -87,22 +72,11 @@ int mathStr2Value(const char *mathStr, int base)
 
 int main()
 {
-	unsigned char ascStr[100] = {"12345678900987654321abcdef"};
-	unsigned char bcd[100] = {0x00};
-
-	ascii2CompressBCD(ascStr, bcd, 100);
-	return 0;
-}
-
-
-
-int main1()
-{
-	unsigned char value = 0;
+	int value = 0;
 	value = mathStr2Value("233", 10);
-	printf("== %d ==\n", value);
-	value = mathStr2Value("ff", 16);
-	printf("== %x ==\n", value);
+	printf("\n== %d ==\n", value);
+	value = mathStr2Value("ef1", 16);
+	printf("\n== 0x%x ==\n", value);
 	return 0;
 }
 

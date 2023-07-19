@@ -44,9 +44,9 @@ int main()
 	memset(szData, 0x00, 1024);
 	memcpy(szData, string, strlen(string));//copy string to szData
 
-	// helloboythisisheima
-	//splitString(szData, "@", mac, sizeof(mac));
-	//printf("%s\n", mac);
+	//helloboythisisheima
+	delSplitChar(szData, "@", mac, sizeof(mac));
+	printf("%s\n", mac);
 
 	//020304050607
 	string = "02-03-04-05-06-07";
