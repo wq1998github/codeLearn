@@ -3,10 +3,6 @@
 #include <string.h>
 
 
-#define APP_VER_BASE "Q@#%Q@#%READER-V1.07"
-#define APP_VER APP_VER_BASE".EN"
-
-
 static int isLittleEndian()
 {
 	unsigned int value = 0x01020304;
@@ -36,25 +32,8 @@ static int isLittleEndian()
 
 int main()
 {
-	//printf("%s\r\n", APP_VER);
-	//printf("%s\r\n", "ss""dd""ee");
-	
 	printf("%d\r\n", isLittleEndian());
 	
-	return 0;
-}
-
-
-
-
-int main1()
-{
-	char* cc = (char*)malloc(100);
-	memcpy(cc, "hello world", strlen("hello world"));
-	//char* str = "hello world";
-	char* str = cc;
-	free(str);
-	printf("hello\n");
 	return 0;
 }
 

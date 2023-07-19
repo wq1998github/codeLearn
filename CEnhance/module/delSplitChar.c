@@ -34,33 +34,13 @@ void delSplitChar(char *srcStr, const char *splitChar, char *outBuff, int outBuf
 	pCopyStr = NULL;
 }
 
-void splitString(char *buffer, const char *split, char *macBuf, int macLen)
-{
-	char *tmp = NULL;
-	int i = 0;
-	int buffLen =  strlen(buffer) + 1;
-	char buff[buffLen];
-
-	memset(buff, 0x00, buffLen);
-	memcpy(buff, buffer, buffLen);
-	memset(macBuf, 0x00, macLen);
-	
-	tmp = strtok(buff, split);
-	while(tmp)
-	{
-		printf("%d, %s\n", ++i, tmp);
-		memcpy(macBuf, tmp, strlen(tmp));
-		macBuf += strlen(macBuf);
-		tmp = strtok(NULL, split);
-	}
-}
 
 int main()
 {
 	char *string = "hello@boy@this@is@heima";
 	char mac[100] = {0x00};
 
-	char *szData = (char *)malloc(1024);//dynamic array
+	char *szData = (char *)malloc(1024);
 	memset(szData, 0x00, 1024);
 	memcpy(szData, string, strlen(string));//copy string to szData
 
@@ -79,14 +59,5 @@ int main()
 	szData = NULL;
 	return 0;
 }
-
-
-
-
-
-
-
-
-
 
 
